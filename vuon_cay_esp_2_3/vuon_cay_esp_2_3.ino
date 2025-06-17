@@ -49,7 +49,7 @@ BlynkTimer timer;
 #define VPIN_SET_L V10
 #define VPIN_SET_H V11
 #define VPIN_LAST_RESPONSE V12
-#define VPIN_MOISTURE_1 V13 // Đã được bạn định nghĩa trước đó
+#define VPIN_MOISTURE_1 V13 
 #define VPIN_MOISTURE_2 V14
 #define VPIN_MOISTURE_3 V15
 #define VPIN_MOISTURE_4 V16
@@ -155,26 +155,26 @@ BLYNK_CONNECTED() {
   timer.setTimeout(1000L, sendDataToBlynkAndOtherServices);
 }
 
-// Các hàm BLYNK_WRITE (Giữ nguyên)
-BLYNK_WRITE(VPIN_MOTOR_CONTROL) { /* ... giữ nguyên, gọi sendDataToBlynkAndOtherServices ... */
+// Các hàm BLYNK_WRITE 
+BLYNK_WRITE(VPIN_MOTOR_CONTROL) { /* ... gọi sendDataToBlynkAndOtherServices ... */
   int value = param.asInt(); sendArduinoCommand(value == 1 ? "MOTOR_ON" : "MOTOR_OFF");
   if (Blynk.connected()) timer.setTimeout(500L, sendDataToBlynkAndOtherServices);
 }
-BLYNK_WRITE(VPIN_FAN_CONTROL) { /* ... giữ nguyên ... */
+BLYNK_WRITE(VPIN_FAN_CONTROL) { 
   int value = param.asInt(); sendArduinoCommand(value == 1 ? "FAN_ON" : "FAN_OFF");
   if (Blynk.connected()) timer.setTimeout(500L, sendDataToBlynkAndOtherServices);
 }
-BLYNK_WRITE(VPIN_LIGHT_CONTROL) { /* ... giữ nguyên ... */
+BLYNK_WRITE(VPIN_LIGHT_CONTROL) {
   int value = param.asInt(); sendArduinoCommand(value == 1 ? "LIGHT_ON" : "LIGHT_OFF");
   if (Blynk.connected()) timer.setTimeout(500L, sendDataToBlynkAndOtherServices);
 }
-BLYNK_WRITE(VPIN_AUTO_MODE) { /* ... giữ nguyên ... */
+BLYNK_WRITE(VPIN_AUTO_MODE) { 
   if (param.asInt() == 1) { sendArduinoCommand("AUTO_MODE");
     if (Blynk.connected()) Blynk.virtualWrite(VPIN_LAST_RESPONSE, "Lệnh AUTO_MODE đã gửi");
   }
   if (Blynk.connected()) timer.setTimeout(500L, sendDataToBlynkAndOtherServices);
 }
-BLYNK_WRITE(VPIN_SET_L) { /* ... giữ nguyên ... */
+BLYNK_WRITE(VPIN_SET_L) { 
   float val = param.asFloat(); String cmd = "SET_L," + String(val, 1);
   String resp = sendArduinoCommand(cmd);
   if (Blynk.connected()) {
@@ -182,7 +182,7 @@ BLYNK_WRITE(VPIN_SET_L) { /* ... giữ nguyên ... */
       else { Blynk.virtualWrite(VPIN_LAST_RESPONSE, "Lỗi Ngưỡng Dưới: " + resp); Blynk.virtualWrite(VPIN_SET_L, currentSetL); }
   }
 }
-BLYNK_WRITE(VPIN_SET_H) { /* ... giữ nguyên ... */
+BLYNK_WRITE(VPIN_SET_H) { 
   float val = param.asFloat(); String cmd = "SET_H," + String(val, 1);
   String resp = sendArduinoCommand(cmd);
   if (Blynk.connected()){
