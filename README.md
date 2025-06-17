@@ -21,9 +21,3 @@
 ### Sau khi hoàn tất việc thiết lập, chúng ta sẽ có giao diện điều khiển trên ứng dụng Blynk IoT. Nếu ESP32 đã kết nối thành công với server Blynk, ứng dụng Blynk IoT sẽ hiển thị trạng thái ONLINE. Bạn có thể điều khiển các RELAY bằng cách sử dụng các công tắc trên giao diện.
 
 ![image](https://github.com/user-attachments/assets/3b02017c-af7b-4e30-b55d-ab9a1a7d21ca)
-
-
-
-
-
-
